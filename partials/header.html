@@ -1,0 +1,59 @@
+<header class="site-header" id="site-header">
+  <div class="site-header__container">
+    <!-- Logo -->
+    <a href="index.html" class="site-header__logo" aria-label="Outlier Works Limited — Home">
+      Outlier<span class="text-gradient">Works</span>
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="site-header__nav" aria-label="Primary navigation">
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="projects.html" class="nav-link" data-page="projects">Projects</a></li>
+        <li><a href="services.html" class="nav-link" data-page="services">Services</a></li>
+        <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+        <li><a href="contact.html" target="_blank" rel="noopener" class="nav-link" data-page="contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Right-side actions -->
+    <div class="site-header__actions">
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark and light mode">
+        <i class="fa-solid fa-moon" id="theme-icon" aria-hidden="true"></i>
+      </button>
+
+      <a href="contact.html" target="_blank" rel="noopener" class="btn btn--primary desktop-only">Get Free Quote</a>
+
+      <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile overlay -->
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+
+  <!-- Mobile slide-in menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu__header">
+      <span class="mobile-menu__title">Menu</span>
+      <button type="button" class="mobile-menu__close" id="mobile-menu-close" aria-label="Close menu">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <nav aria-label="Mobile navigation">
+      <ul class="mobile-menu__list">
+        <li><a href="index.html" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="projects.html" class="nav-link" data-page="projects">Projects</a></li>
+        <li><a href="services.html" class="nav-link" data-page="services">Services</a></li>
+        <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+        <li><a href="contact.html" target="_blank" rel="noopener" class="nav-link" data-page="contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="mobile-menu__footer">
+      <a href="contact.html" target="_blank" rel="noopener" class="btn btn--primary btn--block">Get Free Quote</a>
+    </div>
+  </div>
+</header>
