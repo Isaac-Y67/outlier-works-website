@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   injectPartials();
   initHeroTyping();
   initTestimonialCarousel();
+  initProjectFilter();
+  initProjectModal();
 });
 
 /**
@@ -337,5 +339,105 @@ function initTestimonialCarousel() {
   carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
   carousel.addEventListener('mouseleave', () => {
     autoplay = setInterval(() => goTo(index + 1), 6000);
+  });
+}
+
+/* -------------------------------------------------------------------------
+   Project filter — shows/hides .project-card elements by data-category.
+   Only runs if .project-filter exists (i.e. the Projects page).
+   ------------------------------------------------------------------------- */
+function initProjectFilter() {
+  const filterBar = document.querySelector('.project-filter');
+  const buttons = document.querySelectorAll('.project-filter__btn');
+  const cards = document.querySelectorAll('[data-category]');
+  if (!filterBar || !buttons.length) return;
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.remove('project-filter__btn--active'));
+      btn.classList.add('project-filter__btn--active');
+
+      const filter = btn.dataset.filter;
+      cards.forEach((card) => {
+        const matches = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('project-card--hidden', !matches);
+      });
+    });
+  });
+}
+
+/* -------------------------------------------------------------------------
+   Project gallery modal (lightbox) — reads a JSON array of image paths
+   from each trigger's data-gallery attribute, plus a caption list from
+   data-captions, and lets the visitor step through them.
+   Only runs if a .project-modal exists on the page.
+   ------------------------------------------------------------------------- */
+function initProjectModal() {
+  const modal = document.querySelector('.project-modal');
+  const triggers = document.querySelectorAll('[data-gallery]');
+  if (!modal || !triggers.length) return;
+
+  const imageEl = modal.querySelector('.project-modal__image-wrap img');
+  const captionEl = modal.querySelector('.project-modal__caption');
+  const counterEl = modal.querySelector('.project-modal__counter');
+  const closeBtn = modal.querySelector('.project-modal__close');
+  const prevBtn = modal.querySelector('.project-modal__nav--prev');
+  const nextBtn = modal.querySelector('.project-modal__nav--next');
+
+  let images = [];
+  let captions = [];
+  let index = 0;
+
+  const render = () => {
+    imageEl.src = images[index];
+    imageEl.alt = captions[index] || '';
+    captionEl.textContent = captions[index] || '';
+    counterEl.textContent = `${index + 1} / ${images.length}`;
+  };
+
+  const open = (imgList, capList, startIndex) => {
+    images = imgList;
+    captions = capList;
+    index = startIndex;
+    render();
+    modal.classList.add('project-modal--open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const close = () => {
+    modal.classList.remove('project-modal--open');
+    document.body.style.overflow = '';
+  };
+
+  const step = (delta) => {
+    index = (index + delta + images.length) % images.length;
+    render();
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      try {
+        const imgList = JSON.parse(trigger.dataset.gallery);
+        const capList = trigger.dataset.captions ? JSON.parse(trigger.dataset.captions) : [];
+        open(imgList, capList, 0);
+      } catch (err) {
+        console.error('Invalid gallery data', err);
+      }
+    });
+  });
+
+  closeBtn?.addEventListener('click', close);
+  prevBtn?.addEventListener('click', () => step(-1));
+  nextBtn?.addEventListener('click', () => step(1));
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('project-modal--open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
   });
 }
