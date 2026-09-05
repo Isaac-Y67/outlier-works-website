@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialCarousel();
   initProjectFilter();
   initProjectModal();
+  initFaqAccordion();
 });
 
 /**
@@ -439,5 +440,37 @@ function initProjectModal() {
     if (e.key === 'Escape') close();
     if (e.key === 'ArrowLeft') step(-1);
     if (e.key === 'ArrowRight') step(1);
+  });
+}
+
+/* -------------------------------------------------------------------------
+   FAQ accordion — single-open-at-a-time. Uses max-height transitions so
+   no JS animation library is needed.
+   Only runs if .faq-list exists on the page.
+   ------------------------------------------------------------------------- */
+function initFaqAccordion() {
+  const items = document.querySelectorAll('.faq-item');
+  if (!items.length) return;
+
+  items.forEach((item) => {
+    const question = item.querySelector('.faq-item__question');
+    const answer = item.querySelector('.faq-item__answer');
+
+    question?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('faq-item--open');
+
+      items.forEach((other) => {
+        other.classList.remove('faq-item--open');
+        const otherAnswer = other.querySelector('.faq-item__answer');
+        if (otherAnswer) otherAnswer.style.maxHeight = null;
+        other.querySelector('.faq-item__question')?.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        item.classList.add('faq-item--open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        question.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
 }

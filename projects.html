@@ -37,7 +37,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Custom stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 
   <!-- Structured data: ItemList of projects -->
   <script type="application/ld+json">
@@ -45,29 +45,39 @@
     "@context": "https://schema.org",
     "@type": "ItemList",
     "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Assistant Chief's Office, Bonyando Sub-Location", "url": "https://outlierworkslimited.github.io/projects.html#assistant-chiefs-office" },
+      { "@type": "ListItem", "position": 2, "name": "Nyarenda DEB ECDE Classroom", "url": "https://outlierworkslimited.github.io/projects.html#nyarenda-ecde" },
+      { "@type": "ListItem", "position": 3, "name": "Nyamasege D.O.K ECDE Classroom", "url": "https://outlierworkslimited.github.io/projects.html#nyamasege-ecde" },
+      { "@type": "ListItem", "position": 4, "name": "Community Facility Construction (Ongoing)", "url": "https://outlierworkslimited.github.io/projects.html#community-facility" }
+    ]
+  }
+  </script>
+
+  <!-- Structured data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Assistant Chief's Office, Bonyando Sub-Location",
-        "url": "https://outlierworkslimited.github.io/projects.html#assistant-chiefs-office"
+        "@type": "Question",
+        "name": "What types of projects does Outlier Works Limited handle?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We handle residential, commercial, industrial, and public sector construction, including government and county-funded developments such as ECDE classrooms and administrative offices." }
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Nyarenda DEB ECDE Classroom",
-        "url": "https://outlierworkslimited.github.io/projects.html#nyarenda-ecde"
+        "@type": "Question",
+        "name": "Do you work on publicly funded projects like NG-CDF or county government builds?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our portfolio includes an Assistant Chief's Office funded by NG-CDF Bonchari and ECDE classrooms delivered for Kisii County Government." }
       },
       {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Nyamasege D.O.K ECDE Classroom",
-        "url": "https://outlierworkslimited.github.io/projects.html#nyamasege-ecde"
+        "@type": "Question",
+        "name": "How can I see more project photos or references?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Click 'View Full Gallery' on any project card to see the full construction progress, or contact us directly for a fuller portfolio and references." }
       },
       {
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Community Facility Construction (Ongoing)",
-        "url": "https://outlierworkslimited.github.io/projects.html#community-facility"
+        "@type": "Question",
+        "name": "How do I request a quote for my project?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can request a free quote through our contact page, by emailing outlierworkslimited@gmail.com, or by messaging us directly on WhatsApp." }
       }
     ]
   }
@@ -86,6 +96,28 @@
         <p class="eyebrow">Our Portfolio</p>
         <h1>Our <span class="text-gradient">Projects</span></h1>
         <p>Explore the completed and ongoing construction works we've delivered across Kenya — from public sector offices to community classrooms.</p>
+      </div>
+    </section>
+
+    <!-- ================= PORTFOLIO STATS ================= -->
+    <section class="stats-bar reveal" aria-label="Portfolio overview">
+      <div class="container stats-bar__grid">
+        <div class="stat">
+          <div class="stat__value-row"><span class="stat__value counter" data-target="4">0</span></div>
+          <p class="stat__label">Projects Documented</p>
+        </div>
+        <div class="stat">
+          <div class="stat__value-row"><span class="stat__value counter" data-target="3">0</span></div>
+          <p class="stat__label">Completed</p>
+        </div>
+        <div class="stat">
+          <div class="stat__value-row"><span class="stat__value counter" data-target="1">0</span></div>
+          <p class="stat__label">Currently Ongoing</p>
+        </div>
+        <div class="stat">
+          <div class="stat__value-row"><span class="stat__value counter" data-target="3">0</span></div>
+          <p class="stat__label">Sectors Served</p>
+        </div>
       </div>
     </section>
 
@@ -117,7 +149,14 @@
             <div class="project-card__body">
               <span class="project-card__tag">Public Sector</span>
               <h3>Assistant Chief's Office</h3>
-              <p>Construction of the Assistant Chief's Office, Bonyando Sub-Location, funded by NG-CDF Bonchari (FY 2024–2025), patron Hon. Dr. Charles M. Onchoke, MP.</p>
+              <p>Construction of the Assistant Chief's Office, Bonyando Sub-Location, patron Hon. Dr. Charles M. Onchoke, MP.</p>
+
+              <ul class="project-card__specs">
+                <li class="project-card__spec-item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <span><strong>Location:</strong> Bonyando Sub-Location, Kisii County</span></li>
+                <li class="project-card__spec-item"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> <span><strong>Funded by:</strong> NG-CDF Bonchari, FY 2024–2025</span></li>
+                <li class="project-card__spec-item"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> <span><strong>Scope:</strong> Foundation to finish, including painting &amp; wiring</span></li>
+              </ul>
+
               <button
                 type="button"
                 class="project-card__view-btn"
@@ -139,7 +178,14 @@
             <div class="project-card__body">
               <span class="project-card__tag">Education</span>
               <h3>Nyarenda DEB ECDE Classroom</h3>
-              <p>An early childhood education classroom delivered for Sengera/Bosoti Ward under Kisii County Government, including on-site water storage.</p>
+              <p>An early childhood education classroom delivered for Sengera/Bosoti Ward, including on-site water storage infrastructure.</p>
+
+              <ul class="project-card__specs">
+                <li class="project-card__spec-item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <span><strong>Location:</strong> Sengera/Bosoti Ward, Kisii County</span></li>
+                <li class="project-card__spec-item"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> <span><strong>Client:</strong> Kisii County Government, Dept. of Education</span></li>
+                <li class="project-card__spec-item"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> <span><strong>Scope:</strong> Classroom construction &amp; elevated water tank installation</span></li>
+              </ul>
+
               <button
                 type="button"
                 class="project-card__view-btn"
@@ -160,7 +206,13 @@
             <div class="project-card__body">
               <span class="project-card__tag">Education</span>
               <h3>Nyamasege D.O.K ECDE Classroom</h3>
-              <p>A second ECDE classroom completed for Sengera/Bosoti Ward, Kisii County, built to the same standard of quality and durability.</p>
+              <p>A second ECDE classroom completed for Sengera/Bosoti Ward, built to the same standard of quality and durability.</p>
+
+              <ul class="project-card__specs">
+                <li class="project-card__spec-item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <span><strong>Location:</strong> Sengera/Bosoti Ward, Kisii County</span></li>
+                <li class="project-card__spec-item"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> <span><strong>Client:</strong> Kisii County Government, Dept. of Education</span></li>
+                <li class="project-card__spec-item"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> <span><strong>Scope:</strong> Full classroom construction &amp; finishing</span></li>
+              </ul>
             </div>
           </div>
 
@@ -175,6 +227,12 @@
               <span class="project-card__tag">Commercial</span>
               <h3>Community Facility Construction</h3>
               <p>A larger facility currently under construction, with foundation, reinforced columns, and floor slab works completed to date.</p>
+
+              <ul class="project-card__specs">
+                <li class="project-card__spec-item"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> <span><strong>Progress:</strong> Foundation, columns &amp; slab complete; roofing underway</span></li>
+                <li class="project-card__spec-item"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> <span><strong>Status:</strong> Construction in progress</span></li>
+              </ul>
+
               <button
                 type="button"
                 class="project-card__view-btn"
@@ -186,6 +244,96 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= OUR PROCESS ================= -->
+    <section class="section section--light" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="eyebrow">How We Work</p>
+          <h2 id="process-heading">Our Process</h2>
+          <p>A clear, structured approach from first contact to handover.</p>
+        </div>
+
+        <div class="process-steps">
+          <div class="card process-step reveal">
+            <span class="process-step__number">01</span>
+            <div class="process-step__icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
+            <h3>Consultation</h3>
+            <p>We discuss your vision, site, budget, and timeline to understand exactly what you need.</p>
+          </div>
+          <div class="card process-step reveal">
+            <span class="process-step__number">02</span>
+            <div class="process-step__icon"><i class="fa-solid fa-drafting-compass" aria-hidden="true"></i></div>
+            <h3>Design &amp; Planning</h3>
+            <p>Our team plans the scope of work, materials, and schedule before any ground is broken.</p>
+          </div>
+          <div class="card process-step reveal">
+            <span class="process-step__number">03</span>
+            <div class="process-step__icon"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i></div>
+            <h3>Construction</h3>
+            <p>Skilled craftsmen execute the build with regular quality checks and safety adherence at every stage.</p>
+          </div>
+          <div class="card process-step reveal">
+            <span class="process-step__number">04</span>
+            <div class="process-step__icon"><i class="fa-solid fa-key" aria-hidden="true"></i></div>
+            <h3>Handover</h3>
+            <p>We walk you through the finished project and remain available for any follow-up support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="eyebrow">Questions</p>
+          <h2 id="faq-heading">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <button type="button" class="faq-item__question" aria-expanded="false">
+              What types of projects does Outlier Works Limited handle?
+              <i class="fa-solid fa-plus faq-item__icon" aria-hidden="true"></i>
+            </button>
+            <div class="faq-item__answer">
+              <div class="faq-item__answer-inner">We handle residential, commercial, industrial, and public sector construction, including government and county-funded developments such as ECDE classrooms and administrative offices.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-item__question" aria-expanded="false">
+              Do you work on publicly funded projects like NG-CDF or county government builds?
+              <i class="fa-solid fa-plus faq-item__icon" aria-hidden="true"></i>
+            </button>
+            <div class="faq-item__answer">
+              <div class="faq-item__answer-inner">Yes. Our portfolio includes an Assistant Chief's Office funded by NG-CDF Bonchari and ECDE classrooms delivered for Kisii County Government's Department of Education.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-item__question" aria-expanded="false">
+              How can I see more project photos or references?
+              <i class="fa-solid fa-plus faq-item__icon" aria-hidden="true"></i>
+            </button>
+            <div class="faq-item__answer">
+              <div class="faq-item__answer-inner">Click "View Full Gallery" on any project card above to see the full construction progress from foundation to finish, or contact us directly for a fuller portfolio and client references.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-item__question" aria-expanded="false">
+              How do I request a quote for my project?
+              <i class="fa-solid fa-plus faq-item__icon" aria-hidden="true"></i>
+            </button>
+            <div class="faq-item__answer">
+              <div class="faq-item__answer-inner">You can request a free quote through our contact page, by emailing outlierworkslimited@gmail.com, or by messaging us directly on WhatsApp.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -224,6 +372,6 @@
     <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
   </button>
 
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>
