@@ -339,8 +339,13 @@ html.light-mode .site-header--scrolled {
   .site-header__nav {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
   }
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
 }
 
 .nav-link {
