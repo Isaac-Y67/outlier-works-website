@@ -7,6 +7,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   injectPartials();
+  initHeroTyping();
+  initTestimonialCarousel();
 });
 
 /**
@@ -245,4 +247,95 @@ function initCounters() {
   );
 
   counters.forEach((el) => observer.observe(el));
+}
+
+/* -------------------------------------------------------------------------
+   Hero typing effect — cycles through construction specialties.
+   Only runs if #hero-typed exists on the page (i.e. the homepage).
+   ------------------------------------------------------------------------- */
+function initHeroTyping() {
+  const el = document.getElementById('hero-typed');
+  if (!el) return;
+
+  const phrases = [
+    'Residential Construction',
+    'Commercial Buildings',
+    'Industrial Projects',
+    'Renovations & Remodels',
+  ];
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  const tick = () => {
+    const current = phrases[phraseIndex];
+
+    if (!deleting) {
+      charIndex++;
+      el.textContent = current.slice(0, charIndex);
+      if (charIndex === current.length) {
+        deleting = true;
+        setTimeout(tick, 1800);
+        return;
+      }
+    } else {
+      charIndex--;
+      el.textContent = current.slice(0, charIndex);
+      if (charIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+      }
+    }
+    setTimeout(tick, deleting ? 35 : 75);
+  };
+
+  tick();
+}
+
+/* -------------------------------------------------------------------------
+   Testimonial carousel — builds dots dynamically, supports arrows,
+   autoplay, and pauses autoplay on hover.
+   Only runs if a .testimonial-carousel exists on the page.
+   ------------------------------------------------------------------------- */
+function initTestimonialCarousel() {
+  const carousel = document.querySelector('.testimonial-carousel');
+  const track = document.querySelector('.testimonial-carousel__track');
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const dotsWrap = document.querySelector('.testimonial-carousel__dots');
+  const prevBtn = document.querySelector('.testimonial-carousel__arrow--prev');
+  const nextBtn = document.querySelector('.testimonial-carousel__arrow--next');
+  if (!carousel || !track || !slides.length) return;
+
+  let index = 0;
+  const dots = [];
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'testimonial-carousel__dot' + (i === 0 ? ' testimonial-carousel__dot--active' : '');
+    dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap?.appendChild(dot);
+    dots.push(dot);
+  });
+
+  const update = () => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, i) => dot.classList.toggle('testimonial-carousel__dot--active', i === index));
+  };
+
+  const goTo = (i) => {
+    index = (i + slides.length) % slides.length;
+    update();
+  };
+
+  prevBtn?.addEventListener('click', () => goTo(index - 1));
+  nextBtn?.addEventListener('click', () => goTo(index + 1));
+
+  let autoplay = setInterval(() => goTo(index + 1), 6000);
+  carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
+  carousel.addEventListener('mouseleave', () => {
+    autoplay = setInterval(() => goTo(index + 1), 6000);
+  });
 }
