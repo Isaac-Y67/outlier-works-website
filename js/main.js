@@ -24,13 +24,13 @@ function injectPartials() {
   const footerSlot = document.getElementById('footer');
 
   const headerLoad = headerSlot
-    ? fetch('partials/header.html').then((res) => res.text()).then((html) => {
+    ? fetch('partials/header.html?v=2').then((res) => res.text()).then((html) => {
         headerSlot.innerHTML = html;
       })
     : Promise.resolve();
 
   const footerLoad = footerSlot
-    ? fetch('partials/footer.html').then((res) => res.text()).then((html) => {
+    ? fetch('partials/footer.html?v=2').then((res) => res.text()).then((html) => {
         footerSlot.innerHTML = html;
       })
     : Promise.resolve();
