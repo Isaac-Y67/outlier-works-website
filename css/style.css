@@ -1984,3 +1984,151 @@ html.light-mode .site-header--scrolled {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ==========================================================================
+   31. Three-column grid (Mission / Vision / Values)
+   ========================================================================== */
+.three-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .three-col-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.values-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+/* ==========================================================================
+   32. Avatar initials (used when no real photo is available)
+   ========================================================================== */
+.avatar-initials {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   33. Blog article cards
+   ========================================================================== */
+.article-card {
+  padding: var(--space-2xl);
+  margin-bottom: var(--space-xl);
+}
+
+.article-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+  margin-bottom: var(--space-md);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+.article-card__category {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(201, 169, 78, 0.12);
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.article-card h2 {
+  font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+  margin-bottom: var(--space-md);
+}
+
+.article-card p {
+  color: var(--color-text-secondary);
+}
+
+.article-card__body img {
+  border-radius: var(--radius-lg);
+  margin: var(--space-lg) 0;
+}
+
+/* ==========================================================================
+   34. Team grid
+   ========================================================================== */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 640px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.team-card {
+  text-align: center;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.team-card__avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-lg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  border: 2px solid var(--color-secondary);
+}
+
+.team-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card__avatar .avatar-initials {
+  font-size: 2.25rem;
+}
+
+.team-card__avatar i {
+  font-size: 2rem;
+  color: var(--color-text-muted);
+}
+
+.team-card__name {
+  margin-bottom: 2px;
+  font-size: 1.125rem;
+}
+
+.team-card__role {
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: var(--space-sm);
+}
+
+.team-card__placeholder-note {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: var(--space-sm);
+}
