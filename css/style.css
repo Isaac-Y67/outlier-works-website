@@ -47,6 +47,13 @@
   /* Layout */
   --header-height: 80px;
   --container-width: 1280px;
+
+  /* Fixed footer colors — the footer background never switches with
+     light/dark mode, so its text colors must stay constant too. */
+  --footer-text: #8892B0;
+  --footer-text-strong: #FFFFFF;
+  --footer-text-muted: #495670;
+  --footer-border: #233554;
 }
 
 html.light-mode {
@@ -642,10 +649,10 @@ html.light-mode .site-header--scrolled {
    ========================================================================== */
 .site-footer {
   background: var(--gradient-primary);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--footer-border);
   padding-top: var(--space-3xl);
   padding-bottom: var(--space-xl);
-  color: var(--color-text-secondary);
+  color: var(--footer-text);
 }
 
 .site-footer__container {
@@ -693,11 +700,11 @@ html.light-mode .site-header--scrolled {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--footer-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text-secondary);
+  color: var(--footer-text);
   transition: all 0.25s ease;
 }
 
@@ -709,7 +716,7 @@ html.light-mode .site-header--scrolled {
 }
 
 .footer-column__title {
-  color: var(--color-text-primary);
+  color: var(--footer-text-strong);
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -724,12 +731,17 @@ html.light-mode .site-header--scrolled {
 }
 
 .footer-link {
-  color: var(--color-text-secondary);
+  color: var(--footer-text);
   transition: color 0.2s ease;
 }
 
 .footer-link:hover {
   color: var(--color-secondary);
+}
+
+.footer-link--active {
+  color: var(--color-secondary);
+  font-weight: 600;
 }
 
 .contact-list {
@@ -774,13 +786,13 @@ html.light-mode .site-header--scrolled {
   padding: 0.6rem 0.75rem;
   border-radius: var(--radius-md);
   background: transparent;
-  border: 1px solid var(--color-border);
-  color: var(--color-text-primary);
+  border: 1px solid var(--footer-border);
+  color: var(--footer-text-strong);
   font-size: 0.875rem;
 }
 
 .newsletter-form__input::placeholder {
-  color: var(--color-text-muted);
+  color: var(--footer-text-muted);
 }
 
 .newsletter-form__input:focus {
@@ -795,7 +807,7 @@ html.light-mode .site-header--scrolled {
 }
 
 .site-footer__bottom {
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--footer-border);
   margin-top: var(--space-3xl);
   padding-top: var(--space-lg);
   display: flex;

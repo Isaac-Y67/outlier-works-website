@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectFilter();
   initProjectModal();
   initFaqAccordion();
+  initServiceDetailsToggle();
 });
 
 /**
@@ -133,9 +134,17 @@ function initThemeToggle() {
    ------------------------------------------------------------------------- */
 function initActiveNav() {
   const current = (window.location.pathname.split('/').pop() || 'index.html').replace('.html', '') || 'index';
+
   document.querySelectorAll('.nav-link').forEach((link) => {
     if (link.dataset.page === current) {
       link.classList.add('nav-link--active');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+
+  document.querySelectorAll('.footer-link[data-page]').forEach((link) => {
+    if (link.dataset.page === current) {
+      link.classList.add('footer-link--active');
       link.setAttribute('aria-current', 'page');
     }
   });
@@ -470,6 +479,37 @@ function initFaqAccordion() {
         item.classList.add('faq-item--open');
         answer.style.maxHeight = answer.scrollHeight + 'px';
         question.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+/* -------------------------------------------------------------------------
+   Service card "View Details" toggle — each card expands independently
+   (unlike the FAQ accordion, these are not mutually exclusive).
+   Only runs if .service-card__toggle exists on the page.
+   ------------------------------------------------------------------------- */
+function initServiceDetailsToggle() {
+  const toggles = document.querySelectorAll('.service-card__toggle');
+  if (!toggles.length) return;
+
+  toggles.forEach((toggle) => {
+    const details = toggle.nextElementSibling;
+    if (!details || !details.classList.contains('service-card__details')) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.classList.contains('service-card__toggle--open');
+
+      if (isOpen) {
+        details.style.maxHeight = null;
+        toggle.classList.remove('service-card__toggle--open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.querySelector('.service-card__toggle-label').textContent = 'View Details';
+      } else {
+        details.style.maxHeight = details.scrollHeight + 'px';
+        toggle.classList.add('service-card__toggle--open');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.querySelector('.service-card__toggle-label').textContent = 'Hide Details';
       }
     });
   });
