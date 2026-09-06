@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectModal();
   initFaqAccordion();
   initServiceDetailsToggle();
+  initContactForm();
 });
 
 /**
@@ -512,5 +513,48 @@ function initServiceDetailsToggle() {
         toggle.querySelector('.service-card__toggle-label').textContent = 'Hide Details';
       }
     });
+  });
+}
+
+/* -------------------------------------------------------------------------
+   Contact form — client-side only (no backend configured yet), so on
+   submit it validates the fields then opens the visitor's email client
+   with everything pre-filled. Swap this for a Formspree/backend endpoint
+   later if real-time submission without opening email is preferred.
+   Only runs if #contact-form exists on the page.
+   ------------------------------------------------------------------------- */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  const message = document.getElementById('contact-form-message');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('contact-name');
+    const email = document.getElementById('contact-email');
+    const phone = document.getElementById('contact-phone');
+    const service = document.getElementById('contact-service');
+    const msg = document.getElementById('contact-message');
+
+    if (!name.value.trim() || !email.value.trim() || !email.validity.valid || !msg.value.trim()) {
+      message.textContent = 'Please fill in your name, a valid email, and a message.';
+      message.style.color = 'var(--color-danger)';
+      return;
+    }
+
+    const subject = `New Enquiry — ${service.value} from ${name.value.trim()}`;
+    const body =
+      `Name: ${name.value.trim()}\n` +
+      `Email: ${email.value.trim()}\n` +
+      `Phone: ${phone.value.trim() || 'Not provided'}\n` +
+      `Service: ${service.value}\n\n` +
+      `Message:\n${msg.value.trim()}`;
+
+    const mailtoUrl = `mailto:outlierworkslimited@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    message.textContent = 'Opening your email client to send this message…';
+    message.style.color = 'var(--color-secondary)';
+    window.location.href = mailtoUrl;
   });
 }
